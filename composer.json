@@ -3,7 +3,8 @@
     "description": "Baseline package for authorized security research",
     "type": "library",
     "license": "MIT",
-    "time": "2020-01-01 00:00:00",
+    "time": "2019-06-06 00:00:00",
+    "published-time": "2019-06-06T00:00:00+00:00",
     "require": { "php": ">=8.0" },
     "autoload": { "psr-4": { "DgSecLab\\VcsOne\\": "src/" } }
 }
