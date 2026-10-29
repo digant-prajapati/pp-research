@@ -1,18 +1,74 @@
 {
-  "packages": {
-    "dgseclab/mirror-probe": {
-      "1.0.0": {
-        "name": "dgseclab/mirror-probe",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
-        "type": "library",
-        "time": "2026-10-01T00:00:00+00:00",
-        "dist": {
-          "type": "zip",
-          "url": "https://example.com/benign-placeholder.zip",
-          "reference": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        }
-      }
+ "packages": {
+  "dgseclab/probe-loopback": {
+   "1.0.0": {
+    "name": "dgseclab/probe-loopback",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "http://127.0.0.1:80/x.zip",
+     "reference": "0000000000000000000000000000000000000000"
     }
+   }
+  },
+  "dgseclab/probe-loopback-https": {
+   "1.0.0": {
+    "name": "dgseclab/probe-loopback-https",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://127.0.0.1/x.zip",
+     "reference": "0000000000000000000000000000000000000001"
+    }
+   }
+  },
+  "dgseclab/probe-nipio": {
+   "1.0.0": {
+    "name": "dgseclab/probe-nipio",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "http://127.0.0.1.nip.io/x.zip",
+     "reference": "0000000000000000000000000000000000000002"
+    }
+   }
+  },
+  "dgseclab/probe-linklocal": {
+   "1.0.0": {
+    "name": "dgseclab/probe-linklocal",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "http://169.254.169.254/latest/meta-data/",
+     "reference": "0000000000000000000000000000000000000003"
+    }
+   }
+  },
+  "dgseclab/probe-public": {
+   "1.0.0": {
+    "name": "dgseclab/probe-public",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://example.com/benign-placeholder.zip",
+     "reference": "0000000000000000000000000000000000000004"
+    }
+   }
   }
+ }
 }
