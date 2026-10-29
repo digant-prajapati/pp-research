@@ -1,5 +1,5 @@
 {
-    "name": "dgseclab/secret-pkg",
+    "name": "dgseclab/vcs-one",
     "description": "COLLISION PROBE - shadows an existing private package in the same org",
     "type": "library",
     "license": "MIT",
