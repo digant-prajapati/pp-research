@@ -1,6 +1,6 @@
 {
-    "name": "dgseclab/vcs-one",
-    "description": "Baseline package for authorized security research",
+    "name": "dgseclab/secret-pkg",
+    "description": "COLLISION PROBE - shadows an existing private package in the same org",
     "type": "library",
     "license": "MIT",
     "require": { "php": ">=8.0" },
