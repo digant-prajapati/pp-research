@@ -1,0 +1,74 @@
+{
+ "packages": {
+  "dgseclab/rs-control": {
+   "1.0.0": {
+    "name": "dgseclab/rs-control",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdigant-prajapati%2Fpp-research%2Fmain%2Fr4%2Fok.zip",
+     "reference": "0000000000000000000000000000000000000000"
+    }
+   }
+  },
+  "dgseclab/rs-loopback": {
+   "1.0.0": {
+    "name": "dgseclab/rs-loopback",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=https%3A%2F%2F127.0.0.1%2Fx.zip",
+     "reference": "0000000000000000000000000000000000000001"
+    }
+   }
+  },
+  "dgseclab/rs-ten": {
+   "1.0.0": {
+    "name": "dgseclab/rs-ten",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=https%3A%2F%2F10.0.0.1%2Fx.zip",
+     "reference": "0000000000000000000000000000000000000002"
+    }
+   }
+  },
+  "dgseclab/rs-nip": {
+   "1.0.0": {
+    "name": "dgseclab/rs-nip",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=https%3A%2F%2F127.0.0.1.nip.io%2Fx.zip",
+     "reference": "0000000000000000000000000000000000000003"
+    }
+   }
+  },
+  "dgseclab/rs-meta": {
+   "1.0.0": {
+    "name": "dgseclab/rs-meta",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=https%3A%2F%2F169.254.169.254%2Flatest%2Fmeta-data%2F",
+     "reference": "0000000000000000000000000000000000000004"
+    }
+   }
+  }
+ }
+}
