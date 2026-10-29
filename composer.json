@@ -1,0 +1,8 @@
+{
+    "name": "dgseclab/vcs-one",
+    "description": "Baseline package for authorized security research",
+    "type": "library",
+    "license": "MIT",
+    "require": { "php": ">=8.0" },
+    "autoload": { "psr-4": { "DgSecLab\\VcsOne\\": "src/" } }
+}
