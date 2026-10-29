@@ -1,0 +1,49 @@
+name: publish
+on: [workflow_dispatch]
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trusted publishing claim-matching matrix
+        run: |
+          set -u
+          ORG=dg-sec-lab
+          AUD="private-packagist-trusted-publishing:$ORG"
+          get_tok() {
+            curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=$1" | python3 -c "import sys,json;print(json.load(sys.stdin)['value'])"
+          }
+          TOK=$(get_tok "$AUD")
+          echo "::notice::token acquired, length ${#TOK}"
+          # show the claims we are asserting (safe: public metadata, no signature)
+          python3 - "$TOK" <<'PY'
+          import sys,base64,json
+          p=sys.argv[1].split('.')[1]; p+='='*(-len(p)%4)
+          c=json.loads(base64.urlsafe_b64decode(p))
+          for k in ['iss','aud','sub','repository','repository_owner','workflow_ref','job_workflow_ref','environment']:
+              print(f"  claim {k} = {c.get(k)}")
+          PY
+          probe() {  # $1=label  $2=exchange path
+            code=$(curl -sS -o /tmp/r -w '%{http_code}' -X POST \
+              -H "Authorization: Bearer $2" "https://packagist.com/api/oidc/token-exchange/$3")
+            haskey=no; grep -q '"key"' /tmp/r && haskey=YES
+            msg=$(head -c 110 /tmp/r | tr -d '\n' | sed 's/"secret":"[^"]*"/"secret":"REDACTED"/; s/"key":"[^"]*"/"key":"REDACTED"/')
+            echo "RESULT | $1 | HTTP $code | credential_issued=$haskey | $msg"
+          }
+          echo "===== configured package (CONTROL, expect success)"
+          probe "configured dgseclab/vcs-one" "$TOK" "$ORG/dgseclab%2Fvcs-one"
+          echo "===== package with NO publisher configured"
+          probe "other pkg dgseclab/alpha-pkg" "$(get_tok "$AUD")" "$ORG/dgseclab%2Falpha-pkg"
+          echo "===== non-existent package"
+          probe "nonexistent dgseclab/zzz"     "$(get_tok "$AUD")" "$ORG/dgseclab%2Fzzz"
+          echo "===== case variation of the configured package"
+          probe "UPPERCASE pkg"                "$(get_tok "$AUD")" "$ORG/DGSECLAB%2FVCS-ONE"
+          echo "===== wrong audience"
+          probe "wrong audience"               "$(get_tok 'private-packagist-trusted-publishing:some-other-org')" "$ORG/dgseclab%2Fvcs-one"
+          echo "===== token reuse (same token twice)"
+          R=$(get_tok "$AUD")
+          probe "reuse #1" "$R" "$ORG/dgseclab%2Fvcs-one"
+          probe "reuse #2 (same token)" "$R" "$ORG/dgseclab%2Fvcs-one"
