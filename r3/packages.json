@@ -1,0 +1,74 @@
+{
+ "packages": {
+  "dgseclab/rd-control": {
+   "1.0.0": {
+    "name": "dgseclab/rd-control",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdigant-prajapati%2Fpp-research%2Fmain%2Fr3%2Fok.zip",
+     "reference": "0000000000000000000000000000000000000000"
+    }
+   }
+  },
+  "dgseclab/rd-loopback": {
+   "1.0.0": {
+    "name": "dgseclab/rd-loopback",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=http%3A%2F%2F127.0.0.1%3A80%2Fx.zip",
+     "reference": "0000000000000000000000000000000000000001"
+    }
+   }
+  },
+  "dgseclab/rd-meta": {
+   "1.0.0": {
+    "name": "dgseclab/rd-meta",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=http%3A%2F%2F169.254.169.254%2Flatest%2Fmeta-data%2F",
+     "reference": "0000000000000000000000000000000000000002"
+    }
+   }
+  },
+  "dgseclab/rd-nip": {
+   "1.0.0": {
+    "name": "dgseclab/rd-nip",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=http%3A%2F%2F127.0.0.1.nip.io%2Fx.zip",
+     "reference": "0000000000000000000000000000000000000003"
+    }
+   }
+  },
+  "dgseclab/rd-ten": {
+   "1.0.0": {
+    "name": "dgseclab/rd-ten",
+    "version": "1.0.0",
+    "version_normalized": "1.0.0.0",
+    "type": "library",
+    "time": "2026-10-01T00:00:00+00:00",
+    "dist": {
+     "type": "zip",
+     "url": "https://postman-echo.com/redirect-to?url=http%3A%2F%2F10.0.0.1%2Fx.zip",
+     "reference": "0000000000000000000000000000000000000004"
+    }
+   }
+  }
+ }
+}
