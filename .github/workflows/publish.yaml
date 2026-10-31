@@ -7,51 +7,15 @@ jobs:
   scope:
     runs-on: ubuntu-latest
     steps:
-      - name: Does the OIDC-issued credential honour its documented scope?
+      - uses: actions/checkout@v5
+      - name: Is the OIDC-issued credential scope enforced?
         run: |
           set -u
           ORG=dg-sec-lab
-          AUD="private-packagist-trusted-publishing:$ORG"
           TOK=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=$AUD" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=private-packagist-trusted-publishing:$ORG" \
             | python3 -c "import sys,json;print(json.load(sys.stdin)['value'])")
-          # exchange for the short-lived API credential; keep it out of the log entirely
           curl -sS -X POST -H "Authorization: Bearer $TOK" \
             "https://packagist.com/api/oidc/token-exchange/$ORG/dgseclab%2Fvcs-one" -o /tmp/cred.json
-          python3 -c "
-import json;d=json.load(open('/tmp/cred.json'))
-print('exchange ok:', bool(d.get('key') and d.get('secret')))"
-          python3 - <<'PY'
-          import base64,hashlib,hmac,json,time,uuid,urllib.request,urllib.error
-          from urllib.parse import quote, urlsplit
-          c=json.load(open('/tmp/cred.json')); KEY=c['key']; SEC=c['secret']
-          def enc(s): return quote(str(s), safe='-_.~')
-          def call(method,path,body=None):
-              url='https://packagist.com'+path; u=urlsplit(url)
-              ts=str(int(time.time())); n=uuid.uuid4().hex+uuid.uuid4().hex
-              p={'timestamp':ts,'cnonce':n,'key':KEY,'version':'2','query':''}
-              if body: p['body']=body
-              sts=f"{method}\n{u.hostname}\n{u.path}\n"+"&".join(f"{enc(k)}={enc(v)}" for k,v in sorted(p.items()))
-              sig=base64.b64encode(hmac.new(SEC.encode(),sts.encode(),hashlib.sha256).digest()).decode()
-              h={'Authorization':f"PACKAGIST-HMAC-SHA256 Key={KEY}, Timestamp={ts}, Cnonce={n}, Version=2, Signature={sig}",
-                 'Accept':'application/json'}
-              if body: h['Content-Type']='application/json'
-              r=urllib.request.Request(url,data=body.encode() if body else None,headers=h,method=method)
-              try:
-                  with urllib.request.urlopen(r) as resp: return resp.status, resp.read(400).decode(errors='replace')
-              except urllib.error.HTTPError as e: return e.code, e.read(400).decode(errors='replace')
-          tests=[
-            ('GET','/api/packages/',None),
-            ('GET','/api/customers/',None),
-            ('GET','/api/teams/',None),
-            ('GET','/api/tokens/',None),
-            ('GET','/api/organization/ssh-access-key',None),
-            ('GET','/api/credentials/',None),
-            ('POST','/api/tokens/','{"description":"oidc-escalation-probe","access":"read","accessToAllPackages":true,"expiresAt":"2026-11-20T00:00:00+00:00"}'),
-            ('DELETE','/api/teams/99999999/',None),
-          ]
-          for m,p,b in tests:
-              st,body=call(m,p,b)
-              scoped='insufficient API scopes' in body
-              print(f"SCOPE | {m:6s} {p:42s} HTTP {st}  scope_blocked={scoped}")
-          PY
+          python3 -c "import json;d=json.load(open('/tmp/cred.json'));print('exchange_ok:',bool(d.get('key') and d.get('secret')))"
+          python3 probe/scope_probe.py
