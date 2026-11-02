@@ -1,9 +1,14 @@
 {
     "name": "dgseclab/vcs-one",
-    "description": "research fixture",
+    "description": "v21 unlicensed-change probe",
     "type": "library",
     "license": "MIT",
-    "time": "2017-01-01 00:00:00",
-    "require": { "php": ">=8.0" },
-    "autoload": { "psr-4": { "DgSecLab\\VcsOne\\": "src/" } }
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DgSecLab\\VcsOne\\": "src/"
+        }
+    }
 }
